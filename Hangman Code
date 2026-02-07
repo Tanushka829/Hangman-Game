@@ -1,0 +1,31 @@
+animals=["cat", "dog", "rabbit", "ox", "pig"]
+# string never be equal to list. if you compare dog==d o g it will be always wrong
+import random
+guess_word = random.choice(animals)
+length_in_guess_word = len(guess_word)
+
+total_lives=3
+for length_in_guess_word in guess_word:
+    print("_")
+
+correct_letters=[]
+
+for length_in_guess_word in guess_word:
+    user_input = input("Enter one letter: ").lower()
+    print(user_input)
+
+    if user_input in guess_word:
+        print("Right")
+        if user_input not in correct_letters:
+            correct_letters.append(user_input)
+    else:
+        print("wrong")
+        total_lives-=1
+        print("Lives remaining :",total_lives)
+if len(correct_letters)==len(set(guess_word)) and total_lives>0:
+    print("you win")
+
+elif total_lives==0:
+    print("you Lose")
+print("corrected letters:",correct_letters)
+print("Game Over")
